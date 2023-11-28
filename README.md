@@ -6,7 +6,8 @@ O dataset contém 33 ataques executados em uma topologia IoT composta por 105 di
 
 ### Download
 ```bash
-wget http://205.174.165.80/IOTDataset/CIC_IOT_Dataset2023/CICIOT/csv/CICIoT2023.zip && unzip CICIoT2023.zip -d CICIoT2023
+wget http://205.174.165.80/IOTDataset/CIC_IOT_Dataset2023/CICIOT/csv/CICIoT2023.zip \
+      unzip CICIoT2023.zip -d CICIoT2023
 ```
 
 ### Features 
@@ -60,7 +61,3 @@ wget http://205.174.165.80/IOTDataset/CIC_IOT_Dataset2023/CICIOT/csv/CICIoT2023.
 | Variance        | Variance of the lengths of incoming packets in the flow/variance of the lengths of outgoing packets in the flow        |
 | Weight          | Number of incoming packets × Number of outgoing packets                                                                |
 | label           | Notes the type of attack being run or 'BenignTraffic' for no attack run                                                |
-
-<p align="center">
-// Your content
-</p>
