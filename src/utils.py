@@ -10,8 +10,25 @@ from dtos import ModelDataset, Results
 
 
 def sample_rows(
-    group_by: pl.dataframe.group_by.GroupBy, percentage: float
+    group_by: pl.dataframe.group_by.GroupBy, percentage: int
 ) -> pl.DataFrame:
+    """
+    Amostra linhas de um DataFrame em um objeto GroupBy.
+
+    Parâmetros
+    ----------
+    group_by : pl.dataframe.group_by.GroupBy
+        objeto GroupBy.
+    percentage : float
+        porcentagem de linhas a serem amostradas.
+
+    Retorna
+    -------
+    pl.DataFrame
+        DataFrame amostrado.
+    """
+
+    percentage /= 100
     dfs = []
     for _, df in group_by:
         if len(df) * percentage <= 1:
@@ -22,7 +39,23 @@ def sample_rows(
     return pl.concat(dfs)
 
 
-def generate_dataframe(file_list: list, percentage: float) -> pl.DataFrame:
+def generate_dataframe(file_list: list[str], percentage: int) -> pl.DataFrame:
+    """
+    Cria um DataFrame com uma amostra de linhas de cada arquivo CSV de uma lista.
+
+    Parâmetros
+    ----------
+    file_list : list[str]
+        lista de arquivos CSV.
+    percentage : int
+        porcentagem de linhas a serem amostradas.
+
+    Retorna
+    -------
+    pl.DataFrame
+        DataFrame amostrado.
+    """
+
     dfs = []
     for file in file_list:
         df = pl.read_csv(file)
@@ -67,7 +100,7 @@ def evaluate_model(model, data: ModelDataset, feature_selection_bool: bool):
     )
 
 
-def save_results(results: Results, save_file:str):
+def save_results(results: Results, save_file: str):
     df = pl.DataFrame(vars(results))
 
     file_path = Path(save_file)
