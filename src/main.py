@@ -221,7 +221,9 @@ correlation_plot = sns.heatmap(
     yticklabels=corr.columns,
 )
 if SAVE_PLOTS:
-    correlation_plot.get_figure().savefig(FIGURES_DIR / "correlation_plot.png")
+    correlation_plot.get_figure().savefig(
+        fname=FIGURES_DIR / "correlation_plot.pdf", format="pdf"
+    )
 
 # %%
 if FEATURE_SELECTION:
